@@ -186,6 +186,54 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-设计模式-Facade模式"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/2018/05/07/设计模式-Facade模式/">设计模式-Facade模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2018/05/07/设计模式-Facade模式/" class="article-date">
+	  <time datetime="2018-05-07T15:12:23.000Z" itemprop="datePublished">2018-05-07</time>
+	</a>
+
+      
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="设计模式-Facade模式"><a href="#设计模式-Facade模式" class="headerlink" title="设计模式-Facade模式"></a>设计模式-Facade模式</h1><hr>
+<blockquote>
+<p>通俗解释：为子系统的一组接口提供一个统一接口。也就是说定义一个更高层的接口，使得子系统更加容易使用。</p>
+</blockquote>
+<h2 id="关键特征"><a href="#关键特征" class="headerlink" title="关键特征"></a>关键特征</h2><p>意图：希望简化原有系统的使用方式。需要定义自己的接口。<br>问题：只需要某个复杂系统的字迹，或者，需要以一种特殊的方式与系统交互。<br>解决方案：Facade为原有的系统的客户提供了一个新的接口。<br>参与者与协调者：为客户提供一个简化的接口，使得系统更容易使用。<br>效果：Facade模式简化了子系统的使用过程。同时，Facade并不完整，客户可能不能使用到某些功能。<br>实现方式：1.定义一个或多个新类，具备所需要的接口；2.让新的类使用原有的系统。</p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p><img src="/2018/05/07/设计模式-Facade模式/facade.jpg" alt="facade"><br>1.如果Facade可以设计成没有存储状态的，那么一个Facade对象就能够被多个其他对象使用。<br>2.假设除了使用系统中原有的功能以外，还需要一些新的功能——比如，记录对特定历程的所有调用。在这种强开下，我们就可以为Facade类所写的方法里可以为新的功能添加一些新的例程。这仍然满足Facade模式。<br>3.最基本的，不仅可以用来通过方法调用创建更简单的接口，还可以用来减少客户必须处理的对象数量。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式，Facade/">设计模式，Facade</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
     <article id="post-hello-world"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
