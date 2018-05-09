@@ -3,19 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Leongdut</title>
+  <title>node.js-express实现文件上传 | Leongdut</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
+  <meta name="keywords" content="Node.jsExpress" />
   
   
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Leongdut">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  
+  <meta name="description" content="基本知识补充Express 框架核心特性：  可以设置中间件来响应HTTP请求使得前后端开发者各自高效分工 通过定义路由表来执行不同的HTTP请求动作 通过向模板传递参数来动态喧嚷HTML页面请求和响应   回调函数通过request和response对象来处理请求和响应数据： app.get(&amp;apos;/&amp;apos;, function (req, res) {// --})   Reques">
+<meta name="keywords" content="Node.js,Express">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js-Express实现文件上传">
+<meta property="og:url" content="http://yoursite.com/2018/05/09/Node.js-Express实现文件上传/index.html">
 <meta property="og:site_name" content="Leongdut">
+<meta property="og:description" content="基本知识补充Express 框架核心特性：  可以设置中间件来响应HTTP请求使得前后端开发者各自高效分工 通过定义路由表来执行不同的HTTP请求动作 通过向模板传递参数来动态喧嚷HTML页面请求和响应   回调函数通过request和response对象来处理请求和响应数据： app.get(&amp;apos;/&amp;apos;, function (req, res) {// --})   Reques">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/05/09/Node.js-Express实现文件上传/Node-js-Express/001.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/05/09/Node.js-Express实现文件上传/Node-js-Express/002.jpg">
+<meta property="og:image" content="http://yoursite.com/2018/05/09/Node.js-Express实现文件上传/Node-js-Express/003.jpg">
+<meta property="og:updated_time" content="2018-05-09T13:33:37.917Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Leongdut">
+<meta name="twitter:title" content="Node.js-Express实现文件上传">
+<meta name="twitter:description" content="基本知识补充Express 框架核心特性：  可以设置中间件来响应HTTP请求使得前后端开发者各自高效分工 通过定义路由表来执行不同的HTTP请求动作 通过向模板传递参数来动态喧嚷HTML页面请求和响应   回调函数通过request和response对象来处理请求和响应数据： app.get(&amp;apos;/&amp;apos;, function (req, res) {// --})   Reques">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/09/Node.js-Express实现文件上传/Node-js-Express/001.jpg">
   
     <link rel="alternate" href="/atom.xml" title="Leongdut" type="application/atom+xml">
   
@@ -44,11 +55,13 @@
   <link rel="stylesheet" href="/css/bootstrap.css" >
 
   
-    <link rel="stylesheet" href="/css/home.css" >
+    <link rel="stylesheet" href="/css/dialog.css">
   
 
   
 
+  
+    <link rel="stylesheet" href="/css/header-post.css" >
   
 
   
@@ -59,142 +72,107 @@
 
 
 
-  <body>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
-  
-    <header id="header">
-
-	<!-- 背景图模式 -->
-	
-
-    
-      <div id="intrologo" class="intro-logo">
-    
- 
-
-
-    <canvas width="100%" height="100%"></canvas>
-    <script>
-      var c = document.getElementsByTagName('canvas')[0],
-          x = c.getContext('2d'),
-          w = window.innerWidth,
-          h = window.innerHeight,
-          pr = window.devicePixelRatio || 1,
-          f = 90,
-          q,
-          m = Math,
-          r = 0,
-          u = m.PI*2,
-          v = m.cos,
-          z = m.random
-      c.width = w*pr
-      c.height = h*pr
-      x.scale(pr, pr)
-      x.globalAlpha = 0.6
-
-      <!-- 折线Polyline背景 -->
-      
-        function i(){
-            x.clearRect(0,0,w,h)
-            q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
-            while(q[1].x<w+f) d(q[0], q[1])
-        }
-        function d(i,j){   
-            x.beginPath()
-            x.moveTo(i.x, i.y)
-            x.lineTo(j.x, j.y)
-            var k = j.x + (z()*2-0.25)*f,
-                n = y(j.y)
-            x.lineTo(k, n)
-            x.closePath()
-            r-=u/-50
-            x.fillStyle = '#'+(v(r)*127+128<<16 | v(r+u/3)*127+128<<8 | v(r+u/3*2)*127+128).toString(16)
-            x.fill()
-            q[0] = q[1]
-            q[1] = {x:k,y:n}
-        }
-        function y(p){
-            var t = p + (z()*2-1.1)*f
-            return (t>h||t<0) ? y(p) : t
-        }
-        document.getElementById("intrologo").onclick = i
-        document.getElementById("intrologo").ontouchstart = i
-        i()
-
-      <!-- 多边形trianglify背景 -->
-      
-    </script>
-    
-
-    
-      <div id="homelogo" class="homelogo"> 
-    
-
-        
-          <div class="homelogoback" >
-            <h1><a href="#content" id="logo">Leongdut</a></h1>
-            <h3></h3>
-            <h5>Leon Lin</h5>
-            <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
-          </div>
-        
-    
-    </div>
-  </div>
-
-  <!-- 自适应主页背景大图 -->
-  
-
- <!-- home_logo_image居中 -->
- 
-    <script>
-        var homelogodiv = document.getElementById("homelogo");
-        if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
-          homelogodiv.style.width = document.body.clientWidth + "px";
-          homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
-        } else {
-          homelogodiv.style.width = homelogodiv.clientWidth  + "px";
-          homelogodiv.style.marginLeft = (homelogodiv.clientWidth)  * -0.5 + "px";
-        }
-    </script>
-  
-
-  <div class="intro-navigate">
-      <p class="navigater-list">
-        
-          <a id="beautifont" class="main-nav-link" href="/">首页</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/archives">归档</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/categories">分类</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/tags">标签</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/about">关于</a>
-        
-      </p>
-  </div>
-
-</header>
   
   <div id="container">
     <div id="wrap">
       
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;">
-  
-    <article id="post-Node.js-Express实现文件上传"  class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-Node.js-Express实现文件上传" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
         
   
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/05/09/Node.js-Express实现文件上传/">Node.js-Express实现文件上传</a>
+    <h1 class="thumb" class="article-title" itemprop="name">
+      Node.js-Express实现文件上传
     </h1>
   
 
@@ -208,6 +186,12 @@
 
       
       
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
     </div>
     <div class="article-entry" itemprop="articleBody">
       
@@ -255,72 +239,64 @@
     <footer class="article-footer">
       
       
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Express/">Express</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li></ul>
 
     </footer>
   </div>
   
-</article>
-
-<!-- Table of Contents -->
-
-  
-    <article id="post-设计模式-Facade模式"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
     
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2018/05/07/设计模式-Facade模式/">设计模式-Facade模式</a>
-    </h1>
   
+    <a href="/2018/05/07/设计模式-Facade模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">设计模式-Facade模式</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2018/05/07/设计模式-Facade模式/" class="article-date">
-	  <time datetime="2018-05-07T15:12:23.000Z" itemprop="datePublished">2018-05-07</time>
-	</a>
-
-      
-      
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<blockquote>
-<p>通俗解释：为子系统的一组接口提供一个统一接口。也就是说定义一个更高层的接口，使得子系统更加容易使用。</p>
-</blockquote>
-<h2 id="关键特征"><a href="#关键特征" class="headerlink" title="关键特征"></a>关键特征</h2><p>意图：希望简化原有系统的使用方式。需要定义自己的接口。<br>问题：只需要某个复杂系统的字迹，或者，需要以一种特殊的方式与系统交互。<br>解决方案：Facade为原有的系统的客户提供了一个新的接口。<br>参与者与协调者：为客户提供一个简化的接口，使得系统更容易使用。<br>效果：Facade模式简化了子系统的使用过程。同时，Facade并不完整，客户可能不能使用到某些功能。<br>实现方式：1.定义一个或多个新类，具备所需要的接口；2.让新的类使用原有的系统。</p>
-<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p><img src="/2018/05/07/设计模式-Facade模式/facade.jpg" alt="facade"><br>1.如果Facade可以设计成没有存储状态的，那么一个Facade对象就能够被多个其他对象使用。<br>2.假设除了使用系统中原有的功能以外，还需要一些新的功能——比如，记录对特定历程的所有调用。在这种强开下，我们就可以为Facade类所写的方法里可以为新的功能添加一些新的例程。这仍然满足Facade模式。<br>3.最基本的，不仅可以用来通过方法调用创建更简单的接口，还可以用来减少客户必须处理的对象数量。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Facade/">Facade</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
 
 <!-- Table of Contents -->
 
-  
-
-
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本知识补充"><span class="nav-number">1.</span> <span class="nav-text">基本知识补充</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Express-框架核心特性："><span class="nav-number">1.1.</span> <span class="nav-text">Express 框架核心特性：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#回调函数"><span class="nav-number">1.2.</span> <span class="nav-text">回调函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件上传"><span class="nav-number">1.3.</span> <span class="nav-text">文件上传</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单文件上传功能详解"><span class="nav-number">2.</span> <span class="nav-text">简单文件上传功能详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤"><span class="nav-number">2.1.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#package-json"><span class="nav-number">2.2.</span> <span class="nav-text">package.json</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#app-js"><span class="nav-number">2.3.</span> <span class="nav-text">app.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#public-index-js"><span class="nav-number">2.4.</span> <span class="nav-text">public/index.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图例"><span class="nav-number">2.5.</span> <span class="nav-text">图例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol>
+    
+    </div>
+  </aside>
 </section>
         
       </div>
-      
-        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
       
       <footer id="footer">
   
@@ -412,9 +388,9 @@
 <script src="/js/scripts.js"></script>
 
 
-  <script src="/js/home.js"></script>
 
 
+  <script src="/js/dialog.js"></script>
 
 
 
@@ -499,6 +475,8 @@
   
   <a id="rocket" href="#top" class=""></a>
   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
 </body>
 </html>
